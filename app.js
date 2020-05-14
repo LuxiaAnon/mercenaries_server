@@ -32,7 +32,7 @@ app.use(
 
 // Test to see if user is logged In before getting into any router.
 app.use(function (req, res, next) {
-  console.log(req.session.currentUser);
+  // console.log(req.session.currentUser);
   next();
 });
 
@@ -42,8 +42,14 @@ app.use(function (req, res, next) {
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
+const usersRouter = require("./routes/users");
+const missionsRouter = require("./routes/missions");
+const trainingsRouter = require("./routes/trainings");
 
 app.use("/", indexRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/missions", missionsRouter);
+app.use("/api/training", trainingsRouter);
 
 module.exports = app;

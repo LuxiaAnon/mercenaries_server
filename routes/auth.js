@@ -38,7 +38,7 @@ router.post("/signup", upload.single("avatar"), (req, res, next) => {
     password,
     alias,
     favorite_weapon,
-    presentation,
+    catch_phrase,
     pistols,
     assault_rifles,
     sniper_rifles,
@@ -67,7 +67,7 @@ router.post("/signup", upload.single("avatar"), (req, res, next) => {
       alias,
       password: hashedPassword,
       favorite_weapon,
-      presentation,
+      catch_phrase,
       skills: {
         pistols: req.body.skills.pistols,
         assault_rifles: req.body.skills.assault_rifles,
@@ -85,7 +85,7 @@ router.post("/signup", upload.single("avatar"), (req, res, next) => {
     console.log(newUser);
 
     if (req.file) {
-      newUser.image = req.file.secure_url
+      newUser.avatar = req.file.secure_url
     }
 
     User.create(newUser).then((newUserDocument) => {

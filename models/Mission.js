@@ -57,8 +57,8 @@ const missionSchema = new Schema({
         ref: "User"
     },
     image: {
-        string: String,
-        default: "https://media.contentapi.ea.com/content/dam/masseffect/news-articles/Artificer.jpg.adapt.crop16x9.1455w.jpg"
+        type: String,
+        default: "/images/mission_default.jpg"
     }
 });
 

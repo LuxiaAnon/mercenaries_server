@@ -8,7 +8,7 @@ const trainingSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Weapons", "Healthcare", "Stealth"],
+        enum: ["Weapons", "Healthcare", "Stealth","Driving"],
         required: true
     },
     training_details: {
@@ -48,7 +48,7 @@ const trainingSchema = new Schema({
         ref: "User"
     },
     image: {
-        string: String,
+        type: String,
         default: "https://cdn.apexhq.masseffectarchives.com/wp-content/uploads/2017/03/MP-Missions-Act-0-Chapter-2_Feature-1.jpg"
     }
 });
