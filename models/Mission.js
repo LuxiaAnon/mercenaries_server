@@ -8,7 +8,7 @@ const missionSchema = new Schema({
     },
     mission_details: {
         type: String,
-        required:true
+        required: true
     },
     category: {
         type: String,
@@ -37,13 +37,18 @@ const missionSchema = new Schema({
         }
     },
     recommended_rank: {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
     },
     gained_xp: {
         type: Number,
         required: true
     },
+    reward: {
+        type: Number,
+        required: true
+    },
+
     duration: {
         type: Number,
         required: true
