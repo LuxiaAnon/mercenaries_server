@@ -33,8 +33,9 @@ router.post("/", upload.single("image"), (req, res, next) => {
         proof_of_succes,
         recommended_rank,
         gained_xp,
-        duration
-    } = JSON.parse(req.body.data);
+        duration,
+        participants
+    } = req.body;
 
     const newMission = {
         name,
@@ -47,7 +48,8 @@ router.post("/", upload.single("image"), (req, res, next) => {
         coordinates,
         recommended_rank,
         gained_xp,
-        duration
+        duration,
+        participants
     };
 
     console.log(newMission);
@@ -75,8 +77,9 @@ router.patch("/edit/:id", upload.single("image"), (req, res, next) => {
         proof_of_succes,
         recommended_rank,
         gained_xp,
-        duration
-    } = JSON.parse(req.body.data);
+        duration,
+        participants,
+    } = req.body;
 
     const updatedMission = {
         name,
@@ -89,7 +92,8 @@ router.patch("/edit/:id", upload.single("image"), (req, res, next) => {
         coordinates,
         recommended_rank,
         gained_xp,
-        duration
+        duration,
+        participants
     };
 
     console.log(updatedMission);
