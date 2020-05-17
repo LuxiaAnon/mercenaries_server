@@ -14,16 +14,23 @@ const cors = require("cors");
 /**
  * Middlewares
  */
-const corsOptions = { origin: process.env.FRONTEND_URL, credentials: true };
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+};
 app.use(cors(corsOptions));
 app.use(logger("dev")); // This logs HTTP reponses in the console.
 app.use(express.json()); // Access data sent as json @req.body
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    }),
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
@@ -50,6 +57,6 @@ app.use("/", indexRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/missions", missionsRouter);
-app.use("/api/training", trainingsRouter);
+app.use("/api/trainings", trainingsRouter);
 
 module.exports = app;

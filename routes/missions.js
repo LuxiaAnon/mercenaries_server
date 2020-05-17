@@ -24,10 +24,10 @@ router.get("/:id", (req, res, next) => {
 router.post("/", upload.single("image"), (req, res, next) => {
     const {
         name,
-        mission_details,
+        details,
         category,
         alignment,
-        location,
+        coordinates,
         reward,
         honor_points,
         proof_of_succes,
@@ -38,13 +38,13 @@ router.post("/", upload.single("image"), (req, res, next) => {
 
     const newMission = {
         name,
-        mission_details,
+        details,
         category,
         alignment,
         reward,
         honor_points,
         proof_of_succes,
-        location,
+        coordinates,
         recommended_rank,
         gained_xp,
         duration
@@ -66,10 +66,10 @@ router.post("/", upload.single("image"), (req, res, next) => {
 router.patch("/edit/:id", upload.single("image"), (req, res, next) => {
     const {
         name,
-        mission_details,
+        details,
         category,
         alignment,
-        location,
+        coordinates,
         honor_points,
         reward,
         proof_of_succes,
@@ -80,13 +80,13 @@ router.patch("/edit/:id", upload.single("image"), (req, res, next) => {
 
     const updatedMission = {
         name,
-        mission_details,
+        details,
         category,
         alignment,
         reward,
         honor_points,
         proof_of_succes,
-        location,
+        coordinates,
         recommended_rank,
         gained_xp,
         duration

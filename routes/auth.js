@@ -33,27 +33,19 @@ router.post("/signin", (req, res, next) => {
 });
 
 router.post("/signup", upload.single("avatar"), (req, res, next) => {
-  const {
-    email,
-    password,
-    alias,
-    favorite_weapon,
-    catch_phrase,
-    pistols,
-    assault_rifles,
-    sniper_rifles,
-    hammer,
-    first_aid,
-    medic_crafting,
-    hacking,
-    thievery,
-    car,
-    mecha,
-    spaceship
-  } = req.body;
-  console.log(req.body)
+  console.log(req.body);
+  const data = {
+    email: req.body.email,
+    password: req.body.password,
+    alias: req.body.alias,
+    avatar: req.file.secure_url,
+    favorite_weapon: req.body.favorite_weapon,
+    catch_phrase: req.body.catch_phrase,
+    skills: JSON.parse(req.body.skills),
+  }
+
   User.findOne({
-    email
+    email: data.email
   }).then((userDocument) => {
     if (userDocument) {
       return res.status(400).json({
@@ -61,34 +53,10 @@ router.post("/signup", upload.single("avatar"), (req, res, next) => {
       });
     }
 
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    const newUser = {
-      email,
-      alias,
-      password: hashedPassword,
-      favorite_weapon,
-      catch_phrase,
-      skills: {
-        pistols: req.body.skills.pistols,
-        assault_rifles: req.body.skills.assault_rifles,
-        sniper_rifles: req.body.skills.sniper_rifles,
-        hammer: req.body.skills.hammer,
-        first_aid: req.body.skills.first_aid,
-        medic_crafting: req.body.skills.medic_crafting,
-        hacking: req.body.skills.hacking,
-        thievery: req.body.skills.thievery,
-        car: req.body.skills.car,
-        mecha: req.body.skills.mecha,
-        spaceship: req.body.skills.spaceship
-      }
-    };
-    console.log(newUser);
+    const hashedPassword = bcrypt.hashSync(data.password, salt);
 
-    if (req.file) {
-      newUser.avatar = req.file.secure_url
-    }
-
-    User.create(newUser).then((newUserDocument) => {
+    data.password = hashedPassword;
+    User.create(data).then((newUserDocument) => {
       const userObj = newUserDocument.toObject();
       delete userObj.password;
       req.session.currentUser = userObj;

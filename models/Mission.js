@@ -6,7 +6,7 @@ const missionSchema = new Schema({
         type: String,
         required: true
     },
-    mission_details: {
+    details: {
         type: String,
         required: true
     },
@@ -28,13 +28,10 @@ const missionSchema = new Schema({
         type: String,
         required: true
     },
-    location: {
-        street: String,
-        city: String,
-        coordinates: {
-            type: [Number],
-            required: true
-        }
+    coordinates: {
+        type: [Number],
+        required: true
+
     },
     recommended_rank: {
         type: String,

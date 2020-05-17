@@ -8,10 +8,10 @@ const trainingSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["Weapons", "Healthcare", "Stealth","Driving"],
+        enum: ["Weapons", "Healthcare", "Stealth", "Driving"],
         required: true
     },
-    training_details: {
+    details: {
         type: String,
         required: true
     },
@@ -19,16 +19,13 @@ const trainingSchema = new Schema({
         type: String,
         required: true
     },
-    location: {
-        street: String,
-        city: String,
-        coordinates: {
-            type: [Number],
-            required: true
-        }
+
+    coordinates: {
+        type: [Number],
+        required: true
     },
     required_level: {
-        type: Number,
+        type: String,
         required: true
     },
     duration: {
@@ -47,6 +44,11 @@ const trainingSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: "User"
     },
+    price: {
+        type: Number,
+        required: true
+    },
+
     image: {
         type: String,
         default: "https://cdn.apexhq.masseffectarchives.com/wp-content/uploads/2017/03/MP-Missions-Act-0-Chapter-2_Feature-1.jpg"
