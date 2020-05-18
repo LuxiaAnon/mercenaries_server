@@ -62,6 +62,11 @@ const missionSchema = new Schema({
     image: {
         type: String,
         default: "/images/mission_default.jpg"
+    },
+    available: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 

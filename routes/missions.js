@@ -12,6 +12,9 @@ router.get("/", (req, res, next) => {
         })
 })
 
+
+
+
 router.get("/:id", (req, res, next) => {
     Mission.findById(req.params.id)
         .then((missionDocument) => {
