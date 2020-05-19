@@ -8,19 +8,19 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String,
-    default:"/images/mercenary_default.jpg"
+    default: "./mercenary_default.jpg"
   },
   email: {
     type: String,
     required: true,
-    unique:true
+    unique: true
   },
   password: {
     type: String,
     required: true
   },
   catch_phrase: {
-    type:String
+    type: String
   },
   favorite_weapon: {
     type: String

@@ -38,7 +38,7 @@ router.post("/", upload.single("image"), (req, res, next) => {
         gained_xp,
         duration,
         participants
-    } = req.body;
+    } = JSON.parse(req.body.data)
 
     const newMission = {
         name,

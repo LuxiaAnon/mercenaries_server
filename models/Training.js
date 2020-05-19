@@ -32,10 +32,6 @@ const trainingSchema = new Schema({
         type: Number,
         required: true
     },
-    date: {
-        type: Date,
-        required: true
-    },
     max_trainees: {
         type: Number,
         required: true
@@ -44,6 +40,11 @@ const trainingSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: "User"
     },
+    previous_trainees: {
+        type: [Schema.Types.ObjectId],
+        ref: "User"
+    },
+
     price: {
         type: Number,
         required: true

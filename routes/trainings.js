@@ -31,28 +31,26 @@ router.post("/", upload.single("image"), (req, res, next) => {
         coordinates,
         trainees,
         required_level,
+        previous_trainees,
         duration,
-        date,
         price,
         max_trainees
-    } = req.body
-    // = JSON.parse(req.body.data)
-    console.log(req.body.data)
+    } = JSON.parse(req.body.data)
 
-    date = new Date(date)
-    console.log(date)
+
+
 
     const newTraining = {
         name,
         category,
         details,
         trainees,
+        previous_trainees,
         price,
         skill_learned,
         coordinates,
         required_level,
         duration,
-        date,
         max_trainees
     };
 
@@ -77,15 +75,13 @@ router.patch("/edit/:id", upload.single("image"), (req, res, next) => {
         coordinates,
         price,
         required_level,
+        previous_trainees,
         duration,
-        date,
         trainees,
         max_trainees
     } = req.body
 
 
-    date = new Date(date)
-    console.log(date)
 
     const updatedTraining = {
         name,
@@ -94,10 +90,11 @@ router.patch("/edit/:id", upload.single("image"), (req, res, next) => {
         price,
         trainees,
         skill_learned,
+        previous_trainees,
         coordinates,
         required_level,
         duration,
-        date,
+
         max_trainees
     };
 

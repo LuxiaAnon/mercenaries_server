@@ -44,6 +44,7 @@ router.post("/signup", upload.single("avatar"), (req, res, next) => {
     skills: JSON.parse(req.body.skills),
   }
 
+
   User.findOne({
     email: data.email
   }).then((userDocument) => {
