@@ -38,12 +38,15 @@ router.post("/signup", upload.single("avatar"), (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
     alias: req.body.alias,
-    avatar: req.file.secure_url,
+    // avatar: req.file.secure_url,
     favorite_weapon: req.body.favorite_weapon,
     catch_phrase: req.body.catch_phrase,
     skills: JSON.parse(req.body.skills),
   }
 
+  if (req.file) {
+    data.avatar = req.file.secure_url
+  }
 
   User.findOne({
     email: data.email

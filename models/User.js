@@ -8,7 +8,7 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String,
-    default: "./mercenary_default.jpg"
+    default: "media/images/mercenary_default.jpg"
   },
   email: {
     type: String,

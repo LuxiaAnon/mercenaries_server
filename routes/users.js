@@ -16,6 +16,16 @@ router.get("/", (req, res, next) => {
         });
 })
 
+
+router.get("/:id", (req, res, next) => {
+    User.findById(req.params.id)
+        .then((userDocument) => {
+            res.status(200).json(userDocument)
+        }).catch((err) => {
+            res.status(500).json(err)
+        })
+})
+
 router.patch("/edit/:id", upload.single('avatar'), (req, res, next) => {
     // const {
     //     email,
@@ -35,23 +45,32 @@ router.patch("/edit/:id", upload.single('avatar'), (req, res, next) => {
     //     spaceship
     // } = req.body;
     // console.log(req.body)
+    // console.log(req.body)
+    const data = req.body;
+    if (req.file) data.avatar = req.file.secure_url;
+    console.log(data);
+    // return;
 
-    const data = {
-        email: req.body.email,
-        password: req.body.password,
-        alias: req.body.alias,
-        // avatar: req.file.secure_url,
-        favorite_weapon: req.body.favorite_weapon,
-        catch_phrase: req.body.catch_phrase,
-        skills: JSON.parse(req.body.skills),
-    }
+    // const dataprout = {
+    //     email: req.body.email,
+    //     password: req.body.password,
+    //     alias: req.body.alias,
+    //     // avatar: req.file.secure_url,
+    //     favorite_weapon: req.body.favorite_weapon,
+    //     catch_phrase: req.body.catch_phrase,
+    //     skills: JSON.parse(req.body.skills),
+    // }
 
-    if (req.file) {
-        data.avatar = req.file.secure_url
-    }
+    // if (req.file) {
+    //     data.avatar = req.file.secure_url
+    // }
     // const hashedPassword = bcrypt.hashSync(password, salt);
-    const hashedPassword = bcrypt.hashSync(data.password, salt);
-    data.password = hashedPassword;
+
+
+    // if (data.password) {
+    //     const hashedPassword = bcrypt.hashSync(data.password, salt);
+    //     data.password = hashedPassword;
+    // }
 
     // const updatedUser = {
     //     email,
@@ -75,6 +94,8 @@ router.patch("/edit/:id", upload.single('avatar'), (req, res, next) => {
     // if (req.file) {
     //     updatedUser.avatar = req.file.secure_url
     // }
+    // console.log(data);
+    // return;
     const id = req.params.id
     User.findByIdAndUpdate(id, data, {
         new: true
