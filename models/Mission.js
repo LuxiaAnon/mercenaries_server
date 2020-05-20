@@ -54,6 +54,12 @@ const missionSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: "User"
     },
+
+    previous_participants: {
+        type: [Schema.Types.ObjectId],
+        ref: "User"
+    },
+
     winner: {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -65,7 +71,7 @@ const missionSchema = new Schema({
     available: {
         type: Boolean,
         required: true,
-        default: false
+        default: true
     }
 });
 
