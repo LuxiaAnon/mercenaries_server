@@ -127,7 +127,7 @@ router.patch("/add-cash/:id", upload.single('avatar'), (req, res, next) => {
 
 
 router.delete("/delete/:id", (req, res, next) => {
-    const id = req.session.currentUser._id
+    const id = req.params.id
     User.findByIdAndRemove(id)
         .then((userDocument) => {
             res.status(204).json(userDocument)
